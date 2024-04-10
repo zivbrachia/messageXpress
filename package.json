@@ -1,6 +1,6 @@
 {
   "name": "message_xpress",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "middleware framework for amqp messages",
   "author": "Ziv Brachia",
   "license": "ISC",
