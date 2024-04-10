@@ -4,6 +4,7 @@
   "description": "middleware framework for amqp messages",
   "author": "Ziv Brachia",
   "license": "ISC",
+  "repository":"https://github.com/zivbrachia/messageXpress",
   "scripts": {
   },
   "dependencies": {
