@@ -1,11 +1,14 @@
 {
   "name": "message_xpress",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "middleware framework for amqp messages",
   "author": "Ziv Brachia",
   "license": "ISC",
   "repository":"https://github.com/zivbrachia/messageXpress",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
+    "build": "tsc"
   },
   "dependencies": {
   },
