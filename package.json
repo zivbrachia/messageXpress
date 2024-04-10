@@ -4,6 +4,7 @@
   "description": "middleware framework for amqp messages",
   "author": "Ziv Brachia",
   "license": "ISC",
+  "keywords": ["amqp", "amqplib", "message", "framework", "express"],
   "repository":"https://github.com/zivbrachia/messageXpress",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
