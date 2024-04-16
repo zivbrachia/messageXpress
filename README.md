@@ -43,7 +43,20 @@ const queueName = 'your_queue_name';
 
 const app = new Application();
 
-app.use(express.json({limit: '50Mb'})); // this will triggers for all arriving messages
+// subscribe to Application listeners
+app.on('message_arrive', (rawMsg, ch, req) => {
+  console.log(`Received, from: ${rawMsg.fields.routingKey}, size: ${Buffer.byteLength(rawMsg.content.toString().trim(), 'utf-8')}`)
+});
+
+app.on('handled', (req, res) => {
+  console.log('handled', req.uid, req.body, res.body);
+});
+
+app.on('error', (err: Error, req) => {
+    console.error(`failed handle message, reason:${err.message}`, req);
+})
+
+app.use(express.json({limit: '2Mb'})); // this will triggers for all arriving messages
 app.use((req, res, next) => {
   req.uid = uuidv4(); // ⇨ '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d'
   next();
@@ -67,6 +80,7 @@ route.action('some_action_name', (req, res, next) => {
 
 app.use(route);
 
+// create consume for amqp queue;
 const connection = await amqp.connect('amqp://localhost');
 
 // Create a channel
@@ -111,7 +125,8 @@ app.on('handled', (req, res) => {
 ```js
 app.on('error', (err: Error, req) => {
     // TODO: err can be of any type extends Error.
-    //       this is the error middleware is sending            
+    //       this is the error middleware is throwing by using:         
+    //       next(new Error('this is an error'));
 })
 ```
 
