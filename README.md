@@ -33,6 +33,7 @@ route.use((req, res, next) => {
 ```
 
 ```js
+import express from 'express';
 import amqp from 'amqplib';
 import {Application} from "messageXpress";
 import { v4 as uuidv4 } from 'uuid'; // for example
