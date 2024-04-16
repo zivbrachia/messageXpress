@@ -65,6 +65,8 @@ route.action('some_action_name', (req, res, next) => {
     res.json({success: true, ...someDataToReturn});
 })
 
+app.use(route);
+
 const connection = await amqp.connect('amqp://localhost');
 
 // Create a channel
